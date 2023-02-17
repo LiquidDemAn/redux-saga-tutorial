@@ -2,6 +2,7 @@ import { configureStore, compose } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import { rootReducer } from './root-reducer';
+import { rootSaga } from './root-saga';
 
 declare global {
 	interface Window {
@@ -21,3 +22,5 @@ export const store = configureStore({
 	devTools: composeEnhancers(),
 	middleware: (gDM) => gDM().concat(logger, sagaMiddleware),
 });
+
+sagaMiddleware.run(rootSaga);

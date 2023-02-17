@@ -1,4 +1,4 @@
-import { decreaseCount, increaseCount } from './redux/actions/actions-creator';
+import { decreaseCount, increaseCount, getLatestNewsAction } from './redux/actions/actions-creator';
 import { useAppSelector, useAppDispatch } from './redux/store/hooks';
 
 function App() {
@@ -13,10 +13,15 @@ function App() {
 		dispatch(decreaseCount());
 	};
 
+	const handleNews = () => {
+		dispatch(getLatestNewsAction())
+	};
+
 	return (
 		<div>
 			<button onClick={handleIncrease}>+1</button>
 			<button onClick={handleDecrease}>-1</button>
+			<button onClick={handleNews}>Get News</button>
 			<h1>{count}</h1>
 		</div>
 	);
