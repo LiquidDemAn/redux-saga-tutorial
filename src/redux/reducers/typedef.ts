@@ -7,4 +7,6 @@ export type CounterStateType = {
 export type NewsStateType = {
 	latestNews: NewsType[];
 	popularNews: NewsType[];
+	latestNewsError: string;
+	popularNewsError: string;
 };

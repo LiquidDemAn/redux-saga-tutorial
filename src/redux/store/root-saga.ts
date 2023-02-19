@@ -1,10 +1,12 @@
-import {
-	setLatestNewsAction,
-	setPopularNews,
-} from './../actions/actions-creator';
 import { takeEvery, put, call, fork } from '@redux-saga/core/effects';
 import { getLatestNews, getPopularNews } from './../api/api';
 import { actionTypes } from '../actions/typedef';
+import {
+	setLatestNewsAction,
+	setLatestNewsError,
+	setPopularNews,
+	setPopularNewsError,
+} from './../actions/actions-creator';
 
 export function* handleLatestNews(): Generator<any> {
 	try {
@@ -12,6 +14,7 @@ export function* handleLatestNews(): Generator<any> {
 		yield put(setLatestNewsAction(data.hits));
 	} catch (error) {
 		console.log(error);
+		yield put(setLatestNewsError('Error fetching latest news'));
 	}
 }
 
@@ -21,6 +24,7 @@ export function* handlePopularNews(): Generator<any> {
 		yield put(setPopularNews(data.hits));
 	} catch (error) {
 		console.log(error);
+		yield put(setPopularNewsError('Error fetching popular news'));
 	}
 }
 

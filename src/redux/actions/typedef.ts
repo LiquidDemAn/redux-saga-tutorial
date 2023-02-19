@@ -3,6 +3,8 @@ export enum actionTypes {
 	DECREASE_COUNT = 'DECREASE_COUNT',
 	SET_LATEST_NEWS = 'SET_LATEST_NEWS',
 	SET_POPULAR_NEWS = 'SET_POPULAR_NEWS',
+	SET_LATEST_NEWS_ERROR = 'SET_LATEST_NEWS_ERROR',
+	SET_POPULAR_NEWS_ERROR = 'SET_POPULAR_NEWS_ERROR',
 	GET_NEWS = 'GET_NEWS',
 }
 
@@ -40,5 +42,21 @@ export type GetNews = {
 	type: typeof actionTypes.GET_NEWS;
 };
 
+export type SetLatestNewsError = {
+	type: typeof actionTypes.SET_LATEST_NEWS_ERROR;
+	payload: string;
+};
+
+export type SetPopularNewsError = {
+	type: typeof actionTypes.SET_POPULAR_NEWS_ERROR;
+	payload: string;
+};
+
 export type CounterActions = IncreaseCount | DecreaseCount;
-export type NewsActions = GetNews | SetLatestNews | SetPopularNews;
+
+export type NewsActions =
+	| GetNews
+	| SetLatestNews
+	| SetPopularNews
+	| SetLatestNewsError
+	| SetPopularNewsError;

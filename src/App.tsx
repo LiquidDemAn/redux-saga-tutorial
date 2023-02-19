@@ -5,12 +5,20 @@ import {
 	getNews,
 } from './redux/actions/actions-creator';
 import { getCount } from './redux/selectors/counter';
-import { getLatestNews, getPopularNews } from './redux/selectors/news';
+import {
+	getLatestNews,
+	getPopularNews,
+	getLatestNewsError,
+	getPopularNewsError,
+} from './redux/selectors/news';
 import { useAppSelector, useAppDispatch } from './redux/store/hooks';
 
 function App() {
 	const latestNews = useAppSelector(getLatestNews);
 	const popularNews = useAppSelector(getPopularNews);
+
+	const latestNewsError = useAppSelector(getLatestNewsError);
+	const popularNewsError = useAppSelector(getPopularNewsError);
 
 	const count = useAppSelector(getCount);
 	const dispatch = useAppDispatch();
@@ -30,8 +38,10 @@ function App() {
 	return (
 		<div>
 			<button onClick={handleNews}>Get News</button>
-			<News news={latestNews} title='Latest News' />
-			<News news={popularNews} title='Popular News' />
+			{latestNewsError && <p>{latestNewsError}</p>}
+			{popularNewsError && <p>{popularNewsError}</p>}
+			{!latestNewsError && <News news={latestNews} title='Latest News' />}
+			{!popularNewsError && <News news={popularNews} title='Popular News' />}
 		</div>
 	);
 }

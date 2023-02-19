@@ -5,6 +5,8 @@ import {
 	SetLatestNews,
 	NewsType,
 	SetPopularNews,
+	SetPopularNewsError,
+	SetLatestNewsError,
 } from './typedef';
 
 export const increaseCount = (): IncreaseCount => ({
@@ -27,4 +29,15 @@ export const setPopularNews = (payload: NewsType[]): SetPopularNews => ({
 
 export const getNews = () => ({
 	type: actionTypes.GET_NEWS,
+});
+
+/*ERRORS */
+export const setPopularNewsError = (payload: string): SetPopularNewsError => ({
+	type: actionTypes.SET_POPULAR_NEWS_ERROR,
+	payload,
+});
+
+export const setLatestNewsError = (payload: string): SetLatestNewsError => ({
+	type: actionTypes.SET_LATEST_NEWS_ERROR,
+	payload,
 });
