@@ -1,6 +1,7 @@
 import { actionTypes } from '../actions/typedef';
+import { NewsType } from './typedef';
 
-const initialState = {
+const initialState: NewsType = {
 	latestNews: [],
 };
 
