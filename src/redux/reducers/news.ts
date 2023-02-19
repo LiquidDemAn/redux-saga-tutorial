@@ -1,8 +1,9 @@
 import { actionTypes, NewsActions } from '../actions/typedef';
-import { NewsType } from './typedef';
+import { NewsStateType } from './typedef';
 
-const initialState: NewsType = {
+const initialState: NewsStateType = {
 	latestNews: [],
+	popularNews: [],
 };
 
 export const news = (state = initialState, action: NewsActions) => {
@@ -11,6 +12,12 @@ export const news = (state = initialState, action: NewsActions) => {
 			return {
 				...state,
 				latestNews: [...state.latestNews, ...action.payload],
+			};
+
+		case actionTypes.SET_POPULAR_NEWS:
+			return {
+				...state,
+				popularNews: [...state.popularNews, ...action.payload],
 			};
 		default:
 			return state;

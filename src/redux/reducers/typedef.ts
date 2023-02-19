@@ -1,7 +1,10 @@
-export type CounterType = {
+import { NewsType } from '../actions/typedef';
+
+export type CounterStateType = {
 	count: number;
 };
 
-export type NewsType = {
-	latestNews: [];
+export type NewsStateType = {
+	latestNews: NewsType[];
+	popularNews: NewsType[];
 };

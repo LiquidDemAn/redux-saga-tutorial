@@ -1,7 +1,7 @@
 import { actionTypes, CounterActions } from '../actions/typedef';
-import { CounterType } from './typedef';
+import { CounterStateType } from './typedef';
 
-const initialState: CounterType = {
+const initialState: CounterStateType = {
 	count: 0,
 };
 

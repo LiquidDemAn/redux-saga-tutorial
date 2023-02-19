@@ -2,9 +2,9 @@ import {
 	actionTypes,
 	IncreaseCount,
 	DecreaseCount,
-	GetLatestNews,
 	SetLatestNews,
-	News,
+	NewsType,
+	SetPopularNews,
 } from './typedef';
 
 export const increaseCount = (): IncreaseCount => ({
@@ -15,11 +15,16 @@ export const decreaseCount = (): DecreaseCount => ({
 	type: actionTypes.DECREASE_COUNT,
 });
 
-export const getLatestNewsAction = (): GetLatestNews => ({
-	type: actionTypes.GET_LATEST_NEWS,
-});
-
-export const setLatestNewsAction = (payload: News[]): SetLatestNews => ({
+export const setLatestNewsAction = (payload: NewsType[]): SetLatestNews => ({
 	type: actionTypes.SET_LATEST_NEWS,
 	payload,
+});
+
+export const setPopularNews = (payload: NewsType[]): SetPopularNews => ({
+	type: actionTypes.SET_POPULAR_NEWS,
+	payload,
+});
+
+export const getNews = () => ({
+	type: actionTypes.GET_NEWS,
 });
