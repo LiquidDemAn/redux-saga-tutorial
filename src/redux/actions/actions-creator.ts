@@ -1,4 +1,9 @@
-import { INCREASE_COUNT, DECREASE_COUNT, GET_LATEST_NEWS } from '../constants';
+import {
+	INCREASE_COUNT,
+	DECREASE_COUNT,
+	GET_LATEST_NEWS,
+	SET_LATEST_NEWS,
+} from '../constants';
 
 export const increaseCount = () => ({
 	type: INCREASE_COUNT,
@@ -12,3 +17,7 @@ export const getLatestNewsAction = () => ({
 	type: GET_LATEST_NEWS,
 });
 
+export const setLatestNewsAction = (payload: []) => ({
+	type: SET_LATEST_NEWS,
+	payload,
+});
