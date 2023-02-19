@@ -1,19 +1,16 @@
-import { actionTypes } from '../actions/typedef';
+import { actionTypes, NewsActions } from '../actions/typedef';
 import { NewsType } from './typedef';
 
 const initialState: NewsType = {
 	latestNews: [],
 };
 
-export const news = (
-	state = initialState,
-	{ type, payload }: { type: string; payload: [] }
-) => {
-	switch (type) {
+export const news = (state = initialState, action: NewsActions) => {
+	switch (action.type) {
 		case actionTypes.SET_LATEST_NEWS:
 			return {
 				...state,
-				latestNews: [...state.latestNews, ...payload],
+				latestNews: [...state.latestNews, ...action.payload],
 			};
 		default:
 			return state;
