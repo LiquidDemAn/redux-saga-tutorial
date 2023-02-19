@@ -1,4 +1,4 @@
-import { SET_LATEST_NEWS } from '../constants';
+import { actionTypes } from '../actions/typedef';
 
 const initialState = {
 	latestNews: [],
@@ -9,7 +9,7 @@ export const news = (
 	{ type, payload }: { type: string; payload: [] }
 ) => {
 	switch (type) {
-		case SET_LATEST_NEWS:
+		case actionTypes.SET_LATEST_NEWS:
 			return {
 				...state,
 				latestNews: [...state.latestNews, ...payload],

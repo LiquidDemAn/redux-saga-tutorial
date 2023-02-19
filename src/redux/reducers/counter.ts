@@ -1,4 +1,4 @@
-import { INCREASE_COUNT, DECREASE_COUNT } from '../constants';
+import { actionTypes } from '../actions/typedef';
 
 const initialState = {
 	count: 0,
@@ -6,9 +6,9 @@ const initialState = {
 
 export const counter = (state = initialState, { type }: { type: string }) => {
 	switch (type) {
-		case INCREASE_COUNT:
+		case actionTypes.INCREASE_COUNT:
 			return { ...state, count: state.count + 1 };
-		case DECREASE_COUNT:
+		case actionTypes.DECREASE_COUNT:
 			return { ...state, count: state.count - 1 };
 		default:
 			return state;
