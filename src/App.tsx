@@ -6,7 +6,7 @@ import { Layout } from './components/layout';
 
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './redux/store/hooks';
-import { locationChange, setLocation } from './redux/actions/actions-creator';
+import { changeLocation, setLocation } from './redux/actions/actions-creator';
 import { getPathname } from './redux/selectors/news';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
 	useEffect(() => {
 		if (pathname) {
-			dispatch(locationChange());
+			dispatch(changeLocation());
 		}
 	}, [pathname, dispatch]);
 

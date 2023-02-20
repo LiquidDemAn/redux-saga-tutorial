@@ -6,6 +6,7 @@ const initialState: NewsStateType = {
 	popularNews: [],
 	latestNewsError: '',
 	popularNewsError: '',
+	isLoading: false,
 };
 
 export const news = (state = initialState, action: NewsActions) => {
@@ -38,6 +39,12 @@ export const news = (state = initialState, action: NewsActions) => {
 			return {
 				...state,
 				location: action.payload,
+			};
+
+		case actionTypes.SET_LOADER_DATA:
+			return {
+				...state,
+				isLoading: action.payload,
 			};
 		default:
 			return state;

@@ -5,6 +5,9 @@ import {
 	SetPopularNews,
 	SetPopularNewsError,
 	SetLatestNewsError,
+	SetLoading,
+	LocationType,
+	ChangeLocation,
 } from './typedef';
 
 /*LATEST NEWS */
@@ -30,11 +33,16 @@ export const setPopularNewsError = (payload: string): SetPopularNewsError => ({
 	payload,
 });
 
-export const setLocation = (payload: { pathname: string }) => ({
+export const setLocation = (payload: LocationType) => ({
 	type: actionTypes.SET_LOCATION,
 	payload,
 });
 
-export const locationChange = () => ({
-	type: actionTypes.LOCATION_CHANGE,
+export const changeLocation = (): ChangeLocation => ({
+	type: actionTypes.CHANGE_LOCATION,
+});
+
+export const setLoading = (payload: boolean): SetLoading => ({
+	type: actionTypes.SET_LOADER_DATA,
+	payload,
 });

@@ -4,7 +4,8 @@ export enum actionTypes {
 	SET_LATEST_NEWS_ERROR = 'SET_LATEST_NEWS_ERROR',
 	SET_POPULAR_NEWS_ERROR = 'SET_POPULAR_NEWS_ERROR',
 	SET_LOCATION = 'SET_LOCATION',
-	LOCATION_CHANGE = 'LOCATION_CHANGE',
+	CHANGE_LOCATION = 'CHANGE_LOCATION',
+	SET_LOADER_DATA = 'SET_LOADER_DATA',
 }
 
 export type NewsType = {
@@ -49,7 +50,17 @@ export type SetLocation = {
 	payload: LocationType;
 };
 
+export type SetLoading = {
+	type: typeof actionTypes.SET_LOADER_DATA;
+	payload: boolean;
+};
+
+export type ChangeLocation = {
+	type: typeof actionTypes.CHANGE_LOCATION;
+};
+
 export type NewsActions =
+	| SetLoading
 	| SetLocation
 	| SetLatestNews
 	| SetPopularNews

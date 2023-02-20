@@ -4,6 +4,7 @@ import { actionTypes } from '../actions/typedef';
 import {
 	setLatestNews,
 	setLatestNewsError,
+	setLoading,
 	setPopularNews,
 	setPopularNewsError,
 } from './../actions/actions-creator';
@@ -29,8 +30,9 @@ export function* handlePopularNews(): Generator<any> {
 }
 
 export function* watchNewsSaga(): Generator<any> {
+	yield put(setLoading(true));
+
 	const path = yield select(({ news }) => news.location.pathname);
-	console.log(path);
 
 	if (path === '/popular-news') {
 		yield call(handlePopularNews);
@@ -39,8 +41,10 @@ export function* watchNewsSaga(): Generator<any> {
 	if (path === '/latest-news') {
 		yield call(handleLatestNews);
 	}
+
+	yield put(setLoading(false));
 }
 
 export function* rootSaga() {
-	yield takeLatest(actionTypes.LOCATION_CHANGE, watchNewsSaga);
+	yield takeLatest(actionTypes.CHANGE_LOCATION, watchNewsSaga);
 }

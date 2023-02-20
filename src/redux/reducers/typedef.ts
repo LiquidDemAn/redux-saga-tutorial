@@ -5,5 +5,6 @@ export type NewsStateType = {
 	popularNews: NewsType[];
 	latestNewsError: string;
 	popularNewsError: string;
+	isLoading: boolean;
 	location?: LocationType;
 };
