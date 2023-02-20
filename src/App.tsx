@@ -1,3 +1,4 @@
+import { Header } from './components/header';
 import { News } from './components/news';
 import { getNews } from './redux/actions/actions-creator';
 import {
@@ -22,13 +23,10 @@ function App() {
 	};
 
 	return (
-		<div>
-			<button onClick={handleNews}>Get News</button>
-			{latestNewsError && <p>{latestNewsError}</p>}
-			{popularNewsError && <p>{popularNewsError}</p>}
-			{!latestNewsError && <News news={latestNews} title='Latest News' />}
-			{!popularNewsError && <News news={popularNews} title='Popular News' />}
-		</div>
+		<>
+			<Header />
+			{/* <main>{children}</main> */}
+		</>
 	);
 }
 
