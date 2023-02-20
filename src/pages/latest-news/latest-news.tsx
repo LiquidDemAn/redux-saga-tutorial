@@ -3,11 +3,10 @@ import { getLatestNews, getLatestNewsError } from '../../redux/selectors/news';
 import { useAppSelector, useAppDispatch } from '../../redux/store/hooks';
 
 export const LatestNews = () => {
-	const latestNews = useAppSelector(getLatestNews);
-
-	const latestNewsError = useAppSelector(getLatestNewsError);
-
 	const dispatch = useAppDispatch();
+
+	const latestNews = useAppSelector(getLatestNews);
+	const latestNewsError = useAppSelector(getLatestNewsError);
 
 	return (
 		<div>
