@@ -4,11 +4,12 @@ import './news.css';
 type Props = {
 	news: NewsType[];
 	title: string;
+	error?: string;
 };
 
-export const News = ({ news, title }: Props) => {
-	if (!news || news.length === 0) {
-		return null;
+export const News = ({ news, title, error }: Props) => {
+	if (error) {
+		return <h2>{error}</h2>;
 	}
 
 	return (
