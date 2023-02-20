@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import './header.css';
 
 const navigation = [
 	{ id: 1, title: 'Home', path: '/' },
