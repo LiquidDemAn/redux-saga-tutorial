@@ -1,21 +1,11 @@
 import {
 	actionTypes,
-	IncreaseCount,
-	DecreaseCount,
 	SetLatestNews,
 	NewsType,
 	SetPopularNews,
 	SetPopularNewsError,
 	SetLatestNewsError,
 } from './typedef';
-
-export const increaseCount = (): IncreaseCount => ({
-	type: actionTypes.INCREASE_COUNT,
-});
-
-export const decreaseCount = (): DecreaseCount => ({
-	type: actionTypes.DECREASE_COUNT,
-});
 
 export const setLatestNewsAction = (payload: NewsType[]): SetLatestNews => ({
 	type: actionTypes.SET_LATEST_NEWS,

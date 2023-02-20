@@ -1,10 +1,5 @@
 import News from './components/news/news';
-import {
-	decreaseCount,
-	increaseCount,
-	getNews,
-} from './redux/actions/actions-creator';
-import { getCount } from './redux/selectors/counter';
+import { getNews } from './redux/actions/actions-creator';
 import {
 	getLatestNews,
 	getPopularNews,
@@ -20,16 +15,7 @@ function App() {
 	const latestNewsError = useAppSelector(getLatestNewsError);
 	const popularNewsError = useAppSelector(getPopularNewsError);
 
-	const count = useAppSelector(getCount);
 	const dispatch = useAppDispatch();
-
-	const handleIncrease = () => {
-		dispatch(increaseCount());
-	};
-
-	const handleDecrease = () => {
-		dispatch(decreaseCount());
-	};
 
 	const handleNews = () => {
 		dispatch(getNews());
