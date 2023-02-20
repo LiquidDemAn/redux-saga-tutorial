@@ -6,7 +6,7 @@ type Props = {
 	title: string;
 };
 
-const News = ({ news, title }: Props) => {
+export const News = ({ news, title }: Props) => {
 	if (!news || news.length === 0) {
 		return null;
 	}
@@ -46,5 +46,3 @@ const News = ({ news, title }: Props) => {
 		</div>
 	);
 };
-
-export default News;

@@ -1,4 +1,4 @@
-import News from './components/news/news';
+import { News } from './components/news';
 import { getNews } from './redux/actions/actions-creator';
 import {
 	getLatestNews,
