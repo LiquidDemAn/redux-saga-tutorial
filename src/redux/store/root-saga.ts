@@ -1,4 +1,4 @@
-import { takeEvery, put, call, fork, all } from '@redux-saga/core/effects';
+import { put, call, select, takeLatest } from '@redux-saga/core/effects';
 import { getLatestNews, getPopularNews } from './../api/api';
 import { actionTypes } from '../actions/typedef';
 import {
@@ -28,14 +28,19 @@ export function* handlePopularNews(): Generator<any> {
 	}
 }
 
-export function* watchPopularNews(): Generator<any> {
-	yield takeEvery(actionTypes.LOAD_POPULAR_NEWS, handlePopularNews);
-}
+export function* watchNewsSaga(): Generator<any> {
+	const path = yield select(({ news }) => news.location.pathname);
+	console.log(path);
 
-export function* watchClickSaga() {
-	yield takeEvery(actionTypes.LOAD_LATEST_NEWS, handleLatestNews);
+	if (path === '/popular-news') {
+		yield call(handlePopularNews);
+	}
+
+	if (path === '/latest-news') {
+		yield call(handleLatestNews);
+	}
 }
 
 export function* rootSaga() {
-	yield all([fork(watchPopularNews), fork(watchClickSaga)]);
+	yield takeLatest(actionTypes.LOCATION_CHANGE, watchNewsSaga);
 }

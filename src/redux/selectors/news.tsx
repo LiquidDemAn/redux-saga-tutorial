@@ -6,3 +6,4 @@ export const getLatestNewsError = (state: AppState) =>
 	state.news.latestNewsError;
 export const getPopularNewsError = (state: AppState) =>
 	state.news.popularNewsError;
+export const getPathname = (state: AppState) => state.news.location?.pathname;

@@ -1,10 +1,10 @@
 export enum actionTypes {
-	LOAD_LATEST_NEWS = 'LOAD_LATEST_NEWS',
-	LOAD_POPULAR_NEWS = 'LOAD_POPULAR_NEWS',
 	SET_LATEST_NEWS = 'SET_LATEST_NEWS',
 	SET_POPULAR_NEWS = 'SET_POPULAR_NEWS',
 	SET_LATEST_NEWS_ERROR = 'SET_LATEST_NEWS_ERROR',
 	SET_POPULAR_NEWS_ERROR = 'SET_POPULAR_NEWS_ERROR',
+	SET_LOCATION = 'SET_LOCATION',
+	LOCATION_CHANGE = 'LOCATION_CHANGE',
 }
 
 export type NewsType = {
@@ -18,14 +18,11 @@ export type NewsType = {
 	num_comments: number;
 };
 
-/*ACTIONS TYPES */
-export type LoadLatestNews = {
-	type: typeof actionTypes.LOAD_LATEST_NEWS;
+export type LocationType = {
+	pathname: string;
 };
 
-export type LoadPopularNews = {
-	type: typeof actionTypes.LOAD_POPULAR_NEWS;
-};
+/*ACTIONS TYPES */
 
 export type SetLatestNews = {
 	type: typeof actionTypes.SET_LATEST_NEWS;
@@ -47,7 +44,13 @@ export type SetPopularNewsError = {
 	payload: string;
 };
 
+export type SetLocation = {
+	type: typeof actionTypes.SET_LOCATION;
+	payload: LocationType;
+};
+
 export type NewsActions =
+	| SetLocation
 	| SetLatestNews
 	| SetPopularNews
 	| SetLatestNewsError

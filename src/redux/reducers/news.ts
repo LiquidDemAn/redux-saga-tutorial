@@ -33,6 +33,12 @@ export const news = (state = initialState, action: NewsActions) => {
 				...state,
 				popularNewsError: action.payload,
 			};
+
+		case actionTypes.SET_LOCATION:
+			return {
+				...state,
+				location: action.payload,
+			};
 		default:
 			return state;
 	}
