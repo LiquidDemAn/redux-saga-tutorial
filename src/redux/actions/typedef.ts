@@ -1,9 +1,10 @@
 export enum actionTypes {
+	LOAD_LATEST_NEWS = 'LOAD_LATEST_NEWS',
+	LOAD_POPULAR_NEWS = 'LOAD_POPULAR_NEWS',
 	SET_LATEST_NEWS = 'SET_LATEST_NEWS',
 	SET_POPULAR_NEWS = 'SET_POPULAR_NEWS',
 	SET_LATEST_NEWS_ERROR = 'SET_LATEST_NEWS_ERROR',
 	SET_POPULAR_NEWS_ERROR = 'SET_POPULAR_NEWS_ERROR',
-	GET_NEWS = 'GET_NEWS',
 }
 
 export type NewsType = {
@@ -18,6 +19,14 @@ export type NewsType = {
 };
 
 /*ACTIONS TYPES */
+export type LoadLatestNews = {
+	type: typeof actionTypes.LOAD_LATEST_NEWS;
+};
+
+export type LoadPopularNews = {
+	type: typeof actionTypes.LOAD_POPULAR_NEWS;
+};
+
 export type SetLatestNews = {
 	type: typeof actionTypes.SET_LATEST_NEWS;
 	payload: NewsType[];
@@ -26,10 +35,6 @@ export type SetLatestNews = {
 export type SetPopularNews = {
 	type: typeof actionTypes.SET_POPULAR_NEWS;
 	payload: NewsType[];
-};
-
-export type GetNews = {
-	type: typeof actionTypes.GET_NEWS;
 };
 
 export type SetLatestNewsError = {
@@ -43,7 +48,6 @@ export type SetPopularNewsError = {
 };
 
 export type NewsActions =
-	| GetNews
 	| SetLatestNews
 	| SetPopularNews
 	| SetLatestNewsError

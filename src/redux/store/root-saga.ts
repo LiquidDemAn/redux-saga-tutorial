@@ -1,8 +1,8 @@
-import { takeEvery, put, call, fork } from '@redux-saga/core/effects';
+import { takeEvery, put, call, fork, all } from '@redux-saga/core/effects';
 import { getLatestNews, getPopularNews } from './../api/api';
 import { actionTypes } from '../actions/typedef';
 import {
-	setLatestNewsAction,
+	setLatestNews,
 	setLatestNewsError,
 	setPopularNews,
 	setPopularNewsError,
@@ -11,7 +11,7 @@ import {
 export function* handleLatestNews(): Generator<any> {
 	try {
 		const data: any = yield call(getLatestNews, 'react');
-		yield put(setLatestNewsAction(data.hits));
+		yield put(setLatestNews(data.hits));
 	} catch (error) {
 		console.log(error);
 		yield put(setLatestNewsError('Error fetching latest news'));
@@ -28,15 +28,14 @@ export function* handlePopularNews(): Generator<any> {
 	}
 }
 
-export function* handleNews(): Generator<any> {
-	yield fork(handleLatestNews);
-	yield fork(handlePopularNews);
+export function* watchPopularNews(): Generator<any> {
+	yield takeEvery(actionTypes.LOAD_POPULAR_NEWS, handlePopularNews);
 }
 
 export function* watchClickSaga() {
-	yield takeEvery(actionTypes.GET_NEWS, handleNews);
+	yield takeEvery(actionTypes.LOAD_LATEST_NEWS, handleLatestNews);
 }
 
 export function* rootSaga() {
-	yield watchClickSaga();
+	yield all([fork(watchPopularNews), fork(watchClickSaga)]);
 }
